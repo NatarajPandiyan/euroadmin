@@ -271,6 +271,7 @@
     <!-- App js -->
     <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
     <script src="{{asset('js/select2.full.min.js')}}"></script>
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
     @stack('js-plugin')
      
     <script src="{{asset('js/app.min.js')}}"></script>

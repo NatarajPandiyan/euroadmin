@@ -15,6 +15,9 @@
       #login{
         padding-bottom: 0px;
       }
+      .invalid{
+        color:red;
+      }
     </style>
   </head>
   <body id="login">
@@ -33,12 +36,12 @@
                 </div>
               </div>
               <div class="card-body login_card_body">
-                <form action="#">
+                <form action="#" id="login-form">
                   <div class="form-group form_group_login">
-                    <input class="form-control fs_12" type="text" id="username" required="" placeholder="Username">
+                    <input class="form-control fs_12" type="text" name="email" id="username"  placeholder="Email">
                   </div>
                   <div class="form-group form_group_login">
-                    <input class="form-control fs_12" type="password" required="" id="password" placeholder="Password">
+                    <input class="form-control fs_12" type="password" name="password"  id="password" placeholder="Password">
                   </div>
                   <div class="form-group form_group_login">
                     <!-- <div class="custom-control custom-checkbox checkbox-primary">
@@ -49,7 +52,8 @@
                   </div>
                   <div class="form-group form_group_login account-btn text-center mt-2">
                     <div class="col-12">
-                      <a href="/home" class="btn width-md btn-bordered btn-dark waves-effect waves-light fs_12" type="submit">Log In</a>
+                        <button class="btn width-md btn-bordered btn-dark waves-effect waves-light fs_12">Login</button>
+                      <!-- <a href="/home" class="btn width-md btn-bordered btn-dark waves-effect waves-light fs_12" type="submit">Log In</a> -->
                     </div>
                   </div>
                 </form>
@@ -60,5 +64,34 @@
       </div>
     </div>
     <script src="{{asset('js/vendor.min.js')}}"></script>
+    <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script>
+            (function ($) {
+      "use strict";
+      $("#login-form").validate({
+        rules: {
+          email: {
+            required: true,
+            email:true
+          },
+          password: {
+            required: true,
+          }
+        },
+        messages: {
+          email: {
+            required: 'Please enter your email address',
+            email:'Please enter valid Email address'
+          },
+          password: {
+            required: 'Please enter your password'
+          }
+        },
+        errorPlacement: function (error, element) {
+          error.insertAfter(element.parent());
+        }
+      });
+    })(jQuery);
+    </script>
   </body>
 </html>
